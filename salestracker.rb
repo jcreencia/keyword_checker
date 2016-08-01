@@ -15,6 +15,7 @@ class SalesTracker
 		@inventory_placement_fee = 0
 		@other = 0
 		@advertising_fee = 0
+		@retail_price_per_box = 17.95
 	end
 
 	def count(filename)
@@ -87,10 +88,13 @@ class SalesTracker
 		puts "Other: #{@other}"
 		puts "Inventory placement: #{@inventory_placement_fee}"
 		puts "Advertising fee: #{advertising_fee}"
+		puts ""
 		puts "********************************"
 		puts "PAYOUT: #{amazon_payout}"
 		puts "********************************"
+		puts ""
 		puts "Product costs: #{cost_of_goods_sold}"
+		puts ""
 		puts "--------------------------------"
 		puts "PROFIT: #{gross_profit}"
 		puts "Margin: #{gross_profit_margin}%"
@@ -122,7 +126,7 @@ class SalesTracker
 	end
 
 	def units_to_breakeven
-		((5544.15 - amazon_payout) / 16.95).round
+		((5544.15 - amazon_payout) / @retail_price_per_box).round
 	end
 
 	def amazon_payout
